@@ -1,0 +1,119 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Project overview and architecture
+globs: 
+alwaysApply: true
+---
+# 1. Project Overview and Architecture
+
+This document provides the high-level overview of the project architecture, patterns, and organization.
+
+## Application Architecture
+
+This is a React frontend application built with Vite, TypeScript, Tailwind CSS, and shadcn/ui. The project follows a feature-based architecture optimized for AI-assisted development.
+
+### Core Technologies
+
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Routing**: React Router DOM
+- **State Management**: React Context for UI state, Zustand (optional) for global state
+- **Data Fetching**: React Query
+- **Forms**: React Hook Form with Zod validation
+
+### Project Structure
+
+```
+frontend/
+├── .cursor/              # Cursor AI rules and guides
+│   └── rules/            # Organized rules for Cursor AI
+├── ai/                   # AI-related planning docs and knowledge base
+│   ├── docs/             # AI-accessible implementation docs
+│   ├── plan.md           # Implementation plan broken into phases
+│   └── prd.md            # Product requirements document
+├── public/               # Static assets
+├── src/
+│   ├── components/       # Reusable UI components
+│   │   ├── ui/           # shadcn UI components
+│   │   └── layout/       # Layout components
+│   ├── context/          # React context providers
+│   ├── features/         # Feature-based organization
+│   │   └── [feature-name]/ # Feature-specific code
+│   ├── hooks/            # Custom React hooks
+│   ├── lib/              # Shared libraries and utilities
+│   ├── styles/           # Global styles
+│   ├── types/            # TypeScript type definitions
+│   └── utils/            # Utility functions
+```
+
+## Key Architecture Patterns
+
+### Feature-Based Organization
+
+Features are organized in self-contained modules in the `src/features` directory. Each feature contains everything needed to implement that functional area:
+
+- Components
+- Hooks
+- Utilities
+- Types
+
+This encapsulation makes it easier to understand, maintain, and test features independently.
+
+### Component Composition
+
+Components should be composed from smaller, focused parts rather than creating large monolithic components. This approach:
+
+- Improves reusability
+- Simplifies testing
+- Makes code more maintainable
+- Reduces cognitive load
+
+### Hooks for Logic Extraction
+
+Business logic and complex state management should be extracted into custom hooks. These hooks:
+
+- Separate concerns (UI from business logic)
+- Enable reusability across components
+- Simplify testing
+- Improve readability
+
+### Data Fetching Strategy
+
+For data fetching and management, we use a consistent pattern:
+
+1. Define data fetching hooks within feature directories
+2. Use React Query for caching, loading states, and error handling
+3. Centralize API client configuration
+4. Implement proper error handling
+
+### State Management Approach
+
+The application uses a tiered approach to state management:
+
+1. **Component State**: Use `useState` for component-specific state
+2. **Feature State**: Use context providers for feature-scoped state
+3. **Application State**: Use Zustand for global application state
+4. **Server State**: Use React Query for server-derived state
+
+## shadcn/ui Integration
+
+This project uses shadcn/ui for component design. These components:
+
+- Are installed individually as needed
+- Can be customized for specific project requirements
+- Use Tailwind CSS for styling
+- Support proper accessibility patterns
+
+To add a new shadcn/ui component:
+
+```bash
+npx shadcn-ui@latest add [component-name]
+```
+
+This will add the component code to `src/components/ui/`.

@@ -1,0 +1,221 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Code organization patterns and file structure
+globs: 
+alwaysApply: true
+---
+# 2. Code Organization and Structure
+
+This document covers coding patterns and file structure conventions for this project.
+
+## Directory Structure Guidelines
+
+### Feature Modules
+
+Features should be organized in the `src/features` directory with a consistent internal structure:
+
+```
+src/features/[feature-name]/
+├── components/          # Feature-specific components
+│   ├── feature-page.tsx # Main feature page component
+│   └── ...              # Other components
+├── hooks/               # Feature-specific hooks
+│   ├── use-feature-data.ts
+│   └── ...
+├── utils/               # Feature-specific utilities
+├── types.ts             # Feature-specific types
+└── index.ts             # Public API exports
+```
+
+Use `index.ts` files to expose only the public API of the feature, hiding implementation details.
+
+### Shared Components
+
+Reusable components that are used across features are placed in `src/components/`:
+
+```
+src/components/
+├── ui/                  # shadcn/ui components
+├── layout/              # Layout components like header, footer, etc.
+└── [component-name]/    # Other shared components
+```
+
+### Hooks
+
+Custom hooks are organized in two locations:
+
+1. **Feature-specific hooks**: Located in `src/features/[feature-name]/hooks/`
+2. **Shared hooks**: Located in `src/hooks/`
+
+### Utilities
+
+Similar to hooks, utilities are organized in:
+
+1. **Feature-specific utilities**: Located in `src/features/[feature-name]/utils/`
+2. **Shared utilities**: Located in `src/utils/`
+
+## Naming Conventions
+
+### Files and Directories
+
+- **Components**: Use `PascalCase` for component files (e.g., `Button.tsx`, `UserCard.tsx`)
+- **Hooks**: Use `camelCase` with `use` prefix (e.g., `useAuth.ts`, `useWindowSize.ts`)
+- **Utilities**: Use `camelCase` (e.g., `formatDate.ts`, `validation.ts`)
+- **Types**: Use `PascalCase` for type names, `camelCase` for the file itself if it only contains types
+- **Contexts**: Use `PascalCase` for context files with `-context` suffix (e.g., `AuthContext.tsx`)
+
+### Component Props
+
+- Name component prop interfaces with `Props` suffix (e.g., `ButtonProps`, `UserCardProps`)
+- Place prop interfaces in the same file as the component they belong to
+- For shared prop types, place them in the feature's `types.ts` file
+
+Example:
+
+```tsx
+interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  children: React.ReactNode;
+  onClick?: () => void;
+  disabled?: boolean;
+}
+
+export function Button({ variant = 'primary', size = 'md', children, ...props }: ButtonProps) {
+  // Implementation
+}
+```
+
+## File Organization Patterns
+
+### Component Structure
+
+Components should generally follow this structure:
+
+```tsx
+// 1. Imports
+import React from 'react';
+import { useFeatureHook } from '../hooks/use-feature-hook';
+import { SomeOtherComponent } from './some-other-component';
+
+// 2. Types
+interface ComponentProps {
+  // Props definition
+}
+
+// 3. Component definition
+export function Component({ prop1, prop2 }: ComponentProps) {
+  // 4. Hooks
+  const { data } = useFeatureHook();
+  const [state, setState] = React.useState(initialState);
+  
+  // 5. Derived state / computed values
+  const derivedValue = React.useMemo(() => {
+    // Compute something from props or state
+  }, [dependencies]);
+  
+  // 6. Effects
+  React.useEffect(() => {
+    // Side effects
+  }, [dependencies]);
+  
+  // 7. Event handlers
+  const handleClick = () => {
+    // Handle event
+  };
+  
+  // 8. Conditional rendering logic
+  if (loading) {
+    return <Loading />;
+  }
+  
+  // 9. Main render
+  return (
+    <div>
+      {/* Component JSX */}
+    </div>
+  );
+}
+```
+
+### Hook Structure
+
+Custom hooks should follow this structure:
+
+```tsx
+// 1. Imports
+import React from 'react';
+import { someUtility } from '../utils/some-utility';
+
+// 2. Types
+interface HookParams {
+  // Parameters
+}
+
+interface HookResult {
+  // Return values
+}
+
+// 3. Hook definition
+export function useFeatureHook(params: HookParams): HookResult {
+  // 4. State
+  const [state, setState] = React.useState(initialState);
+  
+  // 5. Effects
+  React.useEffect(() => {
+    // Side effects
+  }, [dependencies]);
+  
+  // 6. Callbacks / handlers
+  const handleSomething = React.useCallback(() => {
+    // Logic
+  }, [dependencies]);
+  
+  // 7. Return values
+  return {
+    state,
+    handleSomething,
+  };
+}
+```
+
+## Import Order
+
+Organize imports consistently:
+
+1. React and React-related imports
+2. Third-party libraries
+3. Absolute imports from the project (from `src/*`)
+4. Relative imports
+5. Type imports
+6. CSS/SCSS imports
+
+Example:
+
+```tsx
+// React and React-related
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+// Third-party libraries
+import { format } from 'date-fns';
+import { motion } from 'framer-motion';
+
+// Absolute imports
+import { Button } from '@/components/ui/button';
+import { useAuth } from '@/hooks/use-auth';
+
+// Relative imports
+import { UserAvatar } from './user-avatar';
+import { useUserProfile } from '../hooks/use-user-profile';
+
+// Type imports
+import type { User } from '../types';
+
+// CSS imports (if any)
+import './styles.css';
+```

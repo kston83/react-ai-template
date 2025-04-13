@@ -1,0 +1,122 @@
+# General Information
+
+This is a React frontend project built with Vite, Tailwind CSS, and shadcn/ui. Always consider the following background information and guidelines when implementing features.
+
+## Quick Reference
+
+### Common Patterns
+- Define features in `src/features/{featureName}`
+- Use shadcn components from `src/components/ui`
+- Create custom layout components in `src/components/layout`
+- Create reusable hooks in `src/hooks`
+- Document features in `ai/docs/{featureName}.md`
+- Feature code should include:
+  - Components in `components/`
+  - Feature-specific hooks in `hooks/`
+  - Utilities in `utils/` if needed
+  - Types in `types.ts`
+- Reference the relevant `ai/docs` files when writing or modifying feature code
+
+### Common Issues
+- If shadcn components aren't rendering correctly, check that the component is properly added
+- Use relative imports for components inside features
+- For shared components, import from the root components directory
+- Use React Query for data fetching where appropriate
+- Use React Context sparingly for global state
+
+## Background Information
+
+### Project Overview
+This is a modern React frontend application built with Vite, using TypeScript for type safety, Tailwind CSS for styling, and shadcn/ui for component design. The project follows a feature-based architecture where each feature is self-contained and organized in the `src/features` directory.
+
+### Core Technologies
+- **React 18**: For component-based UI development
+- **TypeScript**: For type safety
+- **Vite**: For fast development and optimized builds
+- **Tailwind CSS**: For utility-first styling
+- **shadcn/ui**: For high-quality UI components
+- **React Router**: For client-side routing
+- **React Query**: For data fetching and caching
+- **Zustand**: For state management (if needed)
+
+### Project Architecture
+The application is organized around features, with each feature containing its own components, hooks, and utilities. Shared code resides in the appropriate top-level directories:
+
+- `/src/components`: Shared, reusable UI components
+- `/src/hooks`: Shared React hooks
+- `/src/utils`: Utility functions used across features
+- `/src/context`: React context providers for global state
+- `/src/lib`: Third-party library integrations
+- `/src/types`: Shared TypeScript types
+
+Each feature should be self-contained in the `/src/features/{featureName}` directory and should include everything needed for that feature to function.
+
+### Component Best Practices
+- Use functional components with hooks
+- Practice composition over inheritance
+- Keep components small and focused on a single responsibility
+- Use TypeScript properly: define props interfaces, use proper return types
+- Use shadcn/ui components whenever possible before building custom ones
+- Follow consistent naming conventions (PascalCase for components)
+- Implement proper error boundaries and loading states
+
+### Styling Approach
+- Use Tailwind CSS utility classes directly in JSX for styling
+- Leverage the shadcn/ui theming system
+- Avoid CSS-in-JS or separate CSS files unless absolutely necessary
+- Keep styling consistent with the design system
+- Use the `cn()` utility for conditional class names
+- Customize global theme in `tailwind.config.js`
+
+### Import Guidelines
+- Use relative imports for files within the same feature
+- Use absolute imports from the root directories for shared code
+- Avoid deep imports from libraries that don't support them
+- Organize imports consistently: React, libraries, local imports
+- Keep the number of imports manageable; consider combining imports
+
+## Rules
+
+### General Rules
+- Always reference the project plan in `ai/plan.md` as your source of truth for implementation priorities
+- Always reference `ai/docs` for information on implemented features
+- Use TypeScript properly with appropriate type definitions
+- Follow a consistent code style
+- Document complex logic or non-obvious design decisions
+- Ensure all components have proper accessibility attributes
+
+### Component Rules
+- Use functional components with hooks
+- Define prop types explicitly with TypeScript interfaces
+- Provide sensible defaults for optional props
+- Avoid using `any` type; be specific with your types
+- Extract complex logic into custom hooks
+- Keep components focused on UI concerns, move business logic to hooks
+
+### Feature Organization
+- Keep all feature code in `src/features/{featureName}`
+- For each feature, organize code into appropriate subdirectories:
+  - `components/`: Feature-specific UI components
+  - `hooks/`: Feature-specific custom hooks
+  - `utils/`: Feature-specific utilities
+  - `types.ts`: Type definitions for the feature
+  - `index.ts`: Export main components and functions
+
+### Styling Rules
+- Use Tailwind CSS utility classes directly in JSX
+- Follow a mobile-first approach for responsive designs
+- Use the `cn()` utility function for conditional class names
+- Maintain a consistent visual hierarchy and spacing
+- Follow accessibility best practices for colors, contrast, and focus states
+
+### Documentation
+- Document completed features in `ai/docs/{featureName}.md`
+- Update documentation when changing existing features
+- Include the following in feature documentation:
+  - Purpose and functionality
+  - Key components and their interactions
+  - State management approach
+  - Any complex logic or algorithms
+  - Known limitations or future improvements
+
+Keep this `.cursorrules` file updated with any new project conventions or best practices.
