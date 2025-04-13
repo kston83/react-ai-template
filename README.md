@@ -42,7 +42,7 @@ This template is specifically engineered to optimize the developer experience wh
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ai-ready-react-template.git my-project
+git clone https://github.com/kston83/react-ai-template.git my-project
 
 # Navigate to the project
 cd my-project
