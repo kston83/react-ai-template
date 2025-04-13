@@ -119,4 +119,32 @@ Each feature should be self-contained in the `/src/features/{featureName}` direc
   - Any complex logic or algorithms
   - Known limitations or future improvements
 
+# Testing Rules
+
+### General Testing Rules
+- Unit tests should be co-located with the code they're testing
+- Use Vitest with React Testing Library for testing React components
+- Component tests should use semantic queries (getByRole, getByLabelText) over implementation-specific selectors
+- Follow the Arrange-Act-Assert pattern in tests
+- Mock external dependencies and focus on testing behavior, not implementation details
+- Test files should follow the naming convention: `[filename].test.ts(x)`
+- Test coverage should prioritize critical business logic and user-facing components
+
+### Component Testing Rules
+- Test behavior rather than implementation details
+- Use `userEvent` over `fireEvent` when possible for better simulation of real interactions
+- Test accessibility considerations when appropriate
+- Ensure components handle edge cases properly (empty states, loading states, error states)
+
+### Hook Testing Rules
+- Use `renderHook` from React Testing Library to test custom hooks
+- Always wrap state updates in `act`
+- Test all functions returned by the hook
+- Verify initial values and state transitions
+
+### Utility Testing Rules
+- Focus on input/output assertions for pure functions
+- Test edge cases thoroughly (empty values, null, undefined, etc.)
+- Group related tests with descriptive `describe` blocks
+
 Keep this `.cursorrules` file updated with any new project conventions or best practices.
