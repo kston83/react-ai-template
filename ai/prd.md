@@ -1,7 +1,7 @@
 # Product Requirements Document
 
 ## Overview
-This document outlines the requirements and specifications for our frontend application. It serves as the source of truth for product features, user experiences, and technical implementation details.
+This document outlines the requirements and specifications for our frontend application, built with React 19 and Tailwind v4. It serves as the source of truth for product features, user experiences, and technical implementation details.
 
 ## Product Vision
 [Brief description of the product vision and goals]
@@ -16,170 +16,102 @@ This document outlines the requirements and specifications for our frontend appl
 
 #### User Stories
 - As a [user type], I want to [action], so that [benefit]
-- As a [user type], I want to [action], so that [benefit]
-- As a [user type], I want to [action], so that [benefit]
+- ...
 
 #### Requirements
 - **A.1**: [Requirement description]
-  - Acceptance Criteria:
-    - [Criterion 1]
-    - [Criterion 2]
-    - [Criterion 3]
-- **A.2**: [Requirement description]
-  - Acceptance Criteria:
-    - [Criterion 1]
-    - [Criterion 2]
-- **A.3**: [Requirement description]
-  - Acceptance Criteria:
-    - [Criterion 1]
-    - [Criterion 2]
+  - Acceptance Criteria: ...
+- ...
 
 #### UI/UX Requirements
-- **UI.A.1**: [UI requirement description]
-- **UI.A.2**: [UI requirement description]
-- **UI.A.3**: [UI requirement description]
+- **UI.A.1**: [UI requirement description, mentioning specific Shadcn components if relevant]
+- ...
 
 #### Technical Requirements
-- **Tech.A.1**: [Technical requirement description]
-- **Tech.A.2**: [Technical requirement description]
-- **Tech.A.3**: [Technical requirement description]
+- **Tech.A.1**: [Technical requirement description, e.g., "Must fetch data using the useFetchData hook"]
+- ...
 
 ### Feature B: [Feature Name]
-**Purpose**: [Brief description of the feature's purpose]
-
-#### User Stories
-- As a [user type], I want to [action], so that [benefit]
-- As a [user type], I want to [action], so that [benefit]
-- As a [user type], I want to [action], so that [benefit]
-
-#### Requirements
-- **B.1**: [Requirement description]
-  - Acceptance Criteria:
-    - [Criterion 1]
-    - [Criterion 2]
-    - [Criterion 3]
-- **B.2**: [Requirement description]
-  - Acceptance Criteria:
-    - [Criterion 1]
-    - [Criterion 2]
-- **B.3**: [Requirement description]
-  - Acceptance Criteria:
-    - [Criterion 1]
-    - [Criterion 2]
-
-#### UI/UX Requirements
-- **UI.B.1**: [UI requirement description]
-- **UI.B.2**: [UI requirement description]
-- **UI.B.3**: [UI requirement description]
-
-#### Technical Requirements
-- **Tech.B.1**: [Technical requirement description]
-- **Tech.B.2**: [Technical requirement description]
-- **Tech.B.3**: [Technical requirement description]
+**(Similar structure as Feature A)**
 
 ### Feature C: [Feature Name]
-**Purpose**: [Brief description of the feature's purpose]
+**(Similar structure as Feature A)**
 
-#### User Stories
-- As a [user type], I want to [action], so that [benefit]
-- As a [user type], I want to [action], so that [benefit]
-- As a [user type], I want to [action], so that [benefit]
-
-#### Requirements
-- **C.1**: [Requirement description]
-  - Acceptance Criteria:
-    - [Criterion 1]
-    - [Criterion 2]
-    - [Criterion 3]
-- **C.2**: [Requirement description]
-  - Acceptance Criteria:
-    - [Criterion 1]
-    - [Criterion 2]
-
-#### UI/UX Requirements
-- **UI.C.1**: [UI requirement description]
-- **UI.C.2**: [UI requirement description]
-- **UI.C.3**: [UI requirement description]
-
-#### Technical Requirements
-- **Tech.C.1**: [Technical requirement description]
-- **Tech.C.2**: [Technical requirement description]
-- **Tech.C.3**: [Technical requirement description]
 
 ## Non-Functional Requirements
 
 ### Performance
-- **P.1**: Page load time should be under 2 seconds on standard connections
-- **P.2**: Initial load bundle size should be less than 200KB
-- **P.3**: API responses should be cached appropriately to minimize network requests
-- **P.4**: The application should be responsive with no perceived lag when interacting with UI elements
+- **P.1**: Page load time target (e.g., LCP under 2.5s).
+- **P.2**: Interaction responsiveness target (e.g., INP under 200ms).
+- **P.3**: Leverage React 19 Suspense with `use` hook for smooth loading states.
+- **P.4**: Optimize Tailwind v4 CSS output.
 
 ### Accessibility
-- **A.1**: The application must comply with WCAG 2.1 AA standards
-- **A.2**: All interactive elements must be navigable via keyboard
-- **A.3**: The application should work properly with screen readers
-- **A.4**: Color contrast must meet accessibility standards
+- **A.1**: Comply with WCAG 2.1 AA standards.
+- **A.2**: Ensure full keyboard navigability.
+- **A.3**: Test with screen readers (VoiceOver, NVDA).
+- **A.4**: Ensure sufficient color contrast (leveraging Shadcn themes).
 
 ### Browser/Device Support
-- **B.1**: Support the latest 2 versions of major browsers (Chrome, Firefox, Safari, Edge)
-- **B.2**: Responsive design that works on screen sizes from 320px to 1920px width
-- **B.3**: Support for touch interactions on mobile and tablet devices
-- **B.4**: Graceful degradation for older browsers
+- **B.1**: Support latest 2 versions of Chrome, Firefox, Safari, Edge.
+- **B.2**: Responsive design (320px to 1920px+).
+- ...
 
 ### Security
-- **S.1**: All API requests must use HTTPS
-- **S.2**: Implement proper authentication token handling
-- **S.3**: Protect against XSS and CSRF attacks
-- **S.4**: Sensitive data should not be stored in localStorage
+- **S.1**: Use HTTPS.
+- **S.2**: Secure handling of auth tokens (e.g., HttpOnly cookies if applicable).
+- **S.3**: Protect against common web vulnerabilities (XSS, CSRF).
+- ...
 
 ## Technical Architecture
 
 ### Frontend Technologies
-- React 18+ with TypeScript
-- Vite for build tooling
-- Tailwind CSS for styling
-- shadcn/ui for UI components
-- React Router for navigation
-- React Query for data fetching
-- Zustand for state management (if needed)
-- React Hook Form with Zod for form handling and validation
+- **React 19** with TypeScript [cite: ai-template-gemini/package.json, ai-template-gemini/tsconfig.app.json]
+- **Vite** for build tooling [cite: ai-template-gemini/vite.config.ts]
+- **Tailwind CSS v4** for styling [cite: ai-template-gemini/package.json, ai-template-gemini/src/index.css]
+- **shadcn/ui** for UI components [cite: ai-template-gemini/components.json]
+- **React Router** for navigation (or specific router)
+- **React Query** for data fetching (or specific library/method)
+- **Zustand** for global state management (optional, confirm project usage)
+- **React Hook Form** with **Zod** for forms (or specific library/method, consider React 19 Actions)
+- **ESLint 9** (Flat Config) for linting [cite: ai-template-gemini/eslint.config.js]
+- **Vitest** / **React Testing Library** for testing (or specific tools)
 
 ### API Integration
-- RESTful API integration with proper error handling
-- Authentication using JWT tokens
-- Optimistic updates for a better user experience
-- Proper loading and error states
+- RESTful API / GraphQL endpoint integration.
+- Use `Workspace` or libraries like `axios`.
+- Leverage React 19 `use` hook for Suspense integration where appropriate.
+- Consider React 19 Actions for mutations/form submissions.
+- Implement proper loading and error states.
 
 ### State Management
-- Local component state for UI-specific state
-- React Query for server state
-- Context API for feature-specific state
-- Zustand for global application state (if needed)
+- Local component state (`useState`).
+- Feature-level state (`useContext` or feature-specific store).
+- Server cache state (React Query).
+- Global application state (Zustand, if used).
+- URL state for shareable filters/tabs.
 
-## Design System
+## Design System (Based on Shadcn UI & Tailwind)
 
 ### Typography
-- Font family: [Font name]
-- Size scale: [Define size scale]
-- Weights: [Define font weights]
+- Font family: Inter (or as configured in `src/index.css` / Tailwind config).
+- Use Tailwind typography utilities (`text-sm`, `text-lg`, etc.).
 
 ### Colors
-- Primary: [Color value]
-- Secondary: [Color value]
-- Accent: [Color value]
-- Neutral: [Color values for gray scale]
-- Semantic colors: Success, Warning, Error, Info
+- Defined via CSS variables in `src/index.css` [cite: ai-template-gemini/src/index.css].
+- Use semantic variable names (e.g., `bg-primary`, `text-destructive`).
+- Leverage Shadcn UI base color theming (`components.json` baseColor) [cite: ai-template-gemini/components.json].
 
 ### Components
-- [List core UI components and their usage]
+- Primarily use pre-built components from `shadcn/ui`.
+- Style using Tailwind utilities via `className` prop and `cn` utility [cite: ai-template-gemini/src/lib/utils.ts].
+- Build custom composite components following project structure.
 
 ## Analytics and Monitoring
-- **AM.1**: Track page views and navigation
-- **AM.2**: Monitor key user interactions and conversion points
-- **AM.3**: Track performance metrics
-- **AM.4**: Monitor errors and exceptions
+- **AM.1**: Implement analytics tracking (e.g., GA4, Plausible).
+- **AM.2**: Set up error monitoring (e.g., Sentry).
+- ...
 
 ## Future Considerations
-- [Feature or enhancement that might be considered later]
-- [Feature or enhancement that might be considered later]
-- [Feature or enhancement that might be considered later]
+- [Potential future features or technical upgrades]
+- ...

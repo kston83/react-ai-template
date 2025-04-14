@@ -1,0 +1,25 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Guidelines for writing component and hook tests.
+globs: 
+alwaysApply: true
+---
+## Files
+src/**/*.test.tsx
+src/**/*.test.ts
+
+## Rules
+- Use Vitest as the test runner and React Testing Library (RTL) for rendering and interacting with components.
+- Co-locate test files with the source files (e.g., `Button.tsx` and `Button.test.tsx`).
+- Focus on testing component behavior from the user's perspective. Query elements by accessible roles, text, or test IDs.
+- Avoid testing implementation details.
+- Use `render` from RTL to render components.
+- Use `userEvent` from RTL for simulating user interactions.
+- Use `screen` queries from RTL.
+- Mock external dependencies (API calls, modules) using Vitest's mocking capabilities (`vi.fn`, `vi.mock`).
+- Write tests for different prop combinations and edge cases.
+- Ensure tests clean up properly after each run.

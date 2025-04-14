@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Guidelines for documenting features and code.
+globs: 
+alwaysApply: true
+---
+
+## Files
+ai/docs/**/*.md
+src/**/*.ts
+src/**/*.tsx
+
+## Rules
+- Document new features in the `ai/docs/` directory, following the structure of `@file(ai-template-gemini/ai/docs/example-feature.md)`.
+- Include sections for Overview, Implementation Details (Data Model, API, Components, Hooks, State), User Flows, and Usage Examples.
+- Add JSDoc comments to exported functions, hooks, and complex types to explain their purpose, parameters, and return values.
+- Keep documentation concise and up-to-date with the code.
+- Reference relevant PRD sections (`@file(ai-template-gemini/ai/prd.md)`) or Plan phases (`@file(ai-template-gemini/ai/plan.md)`) in feature documentation.

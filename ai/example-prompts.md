@@ -1,116 +1,112 @@
-# Example AI Prompts
+# Example AI Prompts for React 19 / Tailwind v4 Template
 
-This document contains example prompts to use with AI coding assistants like Cursor AI, GitHub Copilot, or Claude when working with this template. These prompts are structured to help the AI understand the project architecture and generate consistent, high-quality code.
+This document contains example prompts to use with AI coding assistants like Cursor AI, GitHub Copilot, or Claude when working with this template. These prompts are structured to help the AI understand the project architecture (React 19, Tailwind v4, Shadcn UI) and generate consistent, high-quality code by referencing the `.cursor/rules/` directory.
 
 ## Feature Creation
 
 ### Create a New Feature
 
-```
-Following the project structure in `.cursor/rules/`, create a new feature called "todoList" that allows users to add, remove, and mark todos as complete. The feature should include:
-1. A TodoList component that displays all todos
-2. A TodoItem component for individual todos
-3. A form for adding new todos
-4. A custom hook for managing todo state
-5. Types for the todo data model
-```
+Following the project structure in @file(.cursor/rules/2-structure.md) and React patterns in @file(.cursor/rules/3-react-patterns.md), create a new feature called "todoList" that allows users to add, remove, and mark todos as complete. The feature should include:
+
+- A TodoList component displaying todos using Shadcn UI components (e.g., Card, Checkbox, Button) styled according to @file(.cursor/rules/4-styling-patterns.md)
+- A TodoItem component for individual todos
+- A form for adding new todos, potentially using React 19 Actions if appropriate for the project patterns
+- A custom hook `useTodos` for managing todo state (use useState or a state management library if configured)
+- TypeScript types for the todo data model
 
 ### Extend an Existing Feature
 
-```
-Based on the counter feature in `src/features/counter`, add the ability to set a custom step size for incrementing and decrementing. Update the components, hooks, and tests accordingly.
-```
+Based on the existing [feature-name] feature in `src/features/[feature-name]`, add the ability to [new functionality]. Update the components, hooks (using React 19 patterns where applicable), and tests accordingly. Ensure changes align with the guidelines in `.cursor/rules/`.
 
 ## Component Creation
 
-### Creating a Shared Component
+### Creating a Shared Shadcn UI Component Wrapper
 
-```
-Create a Modal component following the patterns in `.cursor/rules/3-patterns.mdc` that:
-1. Can be opened and closed
-2. Supports different sizes (sm, md, lg)
-3. Has a header, body, and footer section
-4. Can be closed by clicking outside or pressing Escape
-5. Has proper accessibility attributes
-Include tests following the testing patterns in `.cursor/rules/4-testing.mdc`.
-```
+Create a reusable Modal component wrapper around Shadcn UI's Dialog component, following the patterns in @file(.cursor/rules/3-react-patterns.md) and @file(.cursor/rules/4-styling-patterns.md). It should:
+
+- Accept `isOpen`, `onOpenChange`, `title`, `description`, `children` (for body), and `footerContent` props
+- Render the Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter parts appropriately
+- Ensure proper accessibility attributes are handled by the underlying Shadcn component
+- Use the `cn` utility from @file(ai-template-gemini/src/lib/utils.ts) for merging class names
+- Place this component in `src/components/ui/modal.tsx`
+- Include tests following @file(.cursor/rules/5-testing-patterns.md)
 
 ### Creating a Feature-Specific Component
 
-```
-Create a TodoFilter component for the todoList feature that allows filtering todos by status (all, active, completed). Follow the project structure defined in `.cursor/rules/2-structure.mdc` and place it in the appropriate feature directory.
-```
+Create a `UserProfileCard` component for the `userProfile` feature. It should display user data (avatar, name, email). Use Shadcn UI's Card and Avatar components. Follow the project structure defined in @file(.cursor/rules/2-structure.md) and styling guidelines in @file(.cursor/rules/4-styling-patterns.md). Place it in `src/features/userProfile/components/UserProfileCard.tsx`.
 
 ## Hook Creation
 
-```
-Create a custom hook called useLocalStorage that:
-1. Works like useState but persists the value in localStorage
-2. Takes a key and initial value as parameters
-3. Updates localStorage when the value changes
-4. Retrieves the stored value on initial render
-5. Has proper TypeScript typing
-Include tests following the patterns in `.cursor/rules/4-testing.mdc`.
-```
+### Create a Hook using React 19 `use`
+
+Create a custom hook `useFetchUserProfile` that fetches user profile data from `/api/user/profile`:
+
+- Use the React 19 `use` hook to handle the promise returned by Workspace
+- The hook should integrate with React Suspense for loading states
+- Handle potential fetch errors gracefully
+- Define appropriate TypeScript types for the user profile data
+- Follow hook patterns in @file(.cursor/rules/3-react-patterns.md)
+- Place this hook in `src/hooks/useFetchUserProfile.ts` or a relevant feature hook directory
+- Include tests
+
+### Create a Hook for Local Storage
+
+Create a custom hook called `useLocalStorage` that:
+
+- Works like `useState` but persists the value in `localStorage`
+- Takes a key (string) and initial value (generic type T) as parameters
+- Returns the current value and an updater function `[T, (value: T | ((prevValue: T) => T)) => void]`
+- Updates `localStorage` when the value changes
+- Retrieves the stored value on initial render, falling back to the initial value
+- Has proper TypeScript typing using generics
+- Follows hook patterns in @file(.cursor/rules/3-react-patterns.md)
+- Include tests following @file(.cursor/rules/5-testing-patterns.md)
 
 ## Testing
 
-```
-Create comprehensive tests for the Button component in `src/components/ui/Button.tsx` following the testing patterns in `.cursor/rules/4-testing.mdc`. Include tests for rendering, user interactions, and different prop combinations.
-```
+Create comprehensive tests for the Shadcn Button component usage in `src/features/[some-feature]/components/SubmitButton.tsx`, following the testing patterns in @file(.cursor/rules/5-testing-patterns.md). Include tests for:
+
+- Rendering
+- User interactions (click)
+- Disabled state
+- Applied variants/styles based on props
 
 ## Documentation Creation
 
-```
-Create documentation for the todoList feature in the AI docs directory following the example in `ai/docs/counter-feature.md`. Include an overview, implementation details, usage examples, and extension points.
-```
+Create documentation for the `todoList` feature in the AI docs directory, following the example structure in @file(ai-template-gemini/ai/docs/example-feature.md). Ensure implementation details reflect React 19 patterns and Tailwind v4/Shadcn usage.
 
-## Context Creation
+## Form Handling (with React 19 Actions Example)
 
-```
-Create a ThemeContext that:
-1. Provides theme state (light/dark) to the application
-2. Includes a toggle function to switch themes
-3. Persists the theme preference in localStorage
-4. Follows the patterns in `.cursor/rules/3-patterns.mdc`
-Include a ThemeProvider component and a useTheme hook for consuming the context.
-```
+Create a `SettingsForm` component using React 19 Actions:
 
-## Form Handling
+- Define server action function `updateSettingsAction`
+- Use the `useActionState` hook to manage form state (pending, errors, data)
+- Use the `useFormStatus` hook to disable the submit button during submission
+- Include fields for 'username' and 'email'
+- Display errors returned from the action state
+- Follow patterns in @file(.cursor/rules/3-react-patterns.md)
+- Include tests
 
-```
-Create a form component for user registration using React Hook Form and Zod validation. Follow the form handling patterns in `.cursor/rules/3-patterns.mdc` and implement:
-1. Email, password, and confirm password fields
-2. Validation for all fields
-3. Error messages for validation errors
-4. Form submission handling
-Include tests for form validation and submission.
-```
+## API Integration (using `use` hook example)
 
-## API Integration
-
-```
-Create a data fetching hook called useUsers that:
-1. Fetches a list of users from an API
-2. Uses React Query for data fetching and caching
-3. Handles loading and error states
-4. Follows the patterns in `.cursor/rules/3-patterns.mdc`
-Include types for the API response and error handling.
-```
+Refactor the data fetching logic in the `ProductDetail` component to use a dedicated hook `useProductData(productId)` which leverages the React 19 `use` hook for fetching data from `/api/products/:id`. Ensure the component uses `<Suspense>` for the loading state. Follow patterns in @file(.cursor/rules/3-react-patterns.md).
 
 ## Type Definition
 
-```
-Create TypeScript types for a blog feature that will include posts, comments, and users. Follow the typing patterns used in the project and consider relationships between entities.
-```
+Define TypeScript types for an e-commerce Order feature. Include interfaces for:
+
+- `Order`
+- `OrderItem`
+- `Address`
+- `PaymentDetails`
+
+Follow the typing patterns used in the project (`src/features/[feature]/types.ts`). Consider potential relationships and use appropriate primitive types or custom types.
 
 ## CSS/Styling
 
-```
-Style the CounterPage component in `src/features/counter/components/CounterPage.tsx` using Tailwind CSS. Make it responsive and visually appealing while following the project's styling conventions.
-```
+Style the `DashboardLayout` component in `src/layouts/DashboardLayout.tsx` using Tailwind CSS v4:
 
-## State Management
-
-```
-Implement a Zustand store for managing global application state, following the state management approach outlined in `.cursor/rules/1-overview.mdc`. Include actions for user authentication (login, logout, update profile).
+- Implement a responsive sidebar and main content area
+- Use CSS variables defined in @file(ai-template-gemini/src/index.css) for theming where appropriate
+- Ensure it adheres to @file(.cursor/rules/4-styling-patterns.md)
+- Prefer `size-*` utilities for icons or fixed-size elements

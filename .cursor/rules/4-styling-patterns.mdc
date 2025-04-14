@@ -1,0 +1,30 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Guidelines for documenting features and code.
+globs: 
+alwaysApply: true
+---
+## Description
+Guidelines for styling using Tailwind CSS v4 and Shadcn UI.
+
+## Files
+src/**/*.tsx
+src/index.css
+
+## Rules
+- **Utility-First:** Primarily use Tailwind utility classes directly in JSX `className` props.
+- **`cn` Utility:** Always use the `cn` utility function from `@file(ai-template-gemini/src/lib/utils.ts)` to merge Tailwind classes, especially when combining default classes with passed props.
+- **Shadcn UI Styling:**
+    - Style Shadcn components by passing utility classes via the `className` prop.
+    - Leverage component `variant` and `size` props where available.
+    - For styling internal parts, use `data-slot='...'` selectors in your CSS (`@file(ai-template-gemini/src/index.css)`) if necessary, but prefer composition and props first.
+- **Tailwind v4:**
+    - Utilize CSS variables defined in `@file(ai-template-gemini/src/index.css)` (e.g., `bg-primary`, `text-foreground`).
+    - Prefer `size-*` utilities over separate `w-*` and `h-*` for elements with equal dimensions (like icons).
+    - Configuration is primarily CSS-based in `@file(ai-template-gemini/src/index.css)` using `@theme`. Avoid creating `tailwind.config.js` unless necessary for complex plugins not supported by `@tailwindcss/vite`. [cite: ai-template-gemini/src/index.css, ai-template-gemini/components.json]
+- **Responsiveness:** Use Tailwind's responsive modifiers (e.g., `md:`, `lg:`) for creating adaptive layouts.
+- **Custom CSS:** Keep custom CSS in `@file(ai-template-gemini/src/index.css)` minimal. Use Tailwind's `@layer` directives if adding base styles or component styles.
