@@ -7,26 +7,26 @@ This is a React frontend project built with Vite, React 19, TypeScript, Tailwind
 ## Quick Reference
 
 ### Common Patterns & Structure
-- Define features in `src/features/{featureName}`. [cite: ai-template-gemini/README.md]
-- Use shadcn components from `src/components/ui/` where appropriate. [cite: ai-template-gemini/components.json]
+- Define features in `src/features/{featureName}`. [cite: react-template-ai/README.md]
+- Use shadcn components from `src/components/ui/` where appropriate. [cite: react-template-ai/components.json]
 - Create custom shared layout components in `src/components/layout/`.
 - Create reusable shared hooks in `src/hooks/`.
-- Document features in `ai/docs/{featureName}.md` following the example `@file(ai-template-gemini/ai/docs/example-feature.md)`.
-- Feature code structure (`src/features/{featureName}/`): [cite: ai-template-gemini/CONTRIBUTING.md]
+- Document features in `ai/docs/{featureName}.md` following the example `@file(react-template-ai/ai/docs/example-feature.md)`.
+- Feature code structure (`src/features/{featureName}/`): [cite: react-template-ai/CONTRIBUTING.md]
   - `components/`
   - `hooks/`
   - `utils/` (if needed)
   - `types.ts`
 - Reference the relevant `@file(ai/docs/)`, `@file(ai/prd.md)`, and `@file(ai/plan.md)` files when writing or modifying feature code.
-- Use the `cn()` utility from `@file(ai-template-gemini/src/lib/utils.ts)` for merging Tailwind classes.
+- Use the `cn()` utility from `@file(react-template-ai/src/lib/utils.ts)` for merging Tailwind classes.
 
 ### Common Issues & Checks
-- If shadcn components aren't rendering correctly, ensure they were added via the CLI (`npx shadcn-ui@latest add ...`) and check `@file(ai-template-gemini/components.json)`.
+- If shadcn components aren't rendering correctly, ensure they were added via the CLI (`npx shadcn-ui@latest add ...`) and check `@file(react-template-ai/components.json)`.
 - Use relative imports for components inside the same feature module.
-- For shared components/hooks/utils, use absolute imports configured via `@/*` path alias (see `@file(ai-template-gemini/tsconfig.json)`).
+- For shared components/hooks/utils, use absolute imports configured via `@/*` path alias (see `@file(react-template-ai/tsconfig.json)`).
 - Use React Query (if installed/configured) for data fetching, potentially leveraging the React 19 `use` hook for Suspense integration.
 - Use React Context sparingly; prefer component composition or feature-level hooks.
-- Ensure code passes ESLint checks based on the flat config: `@file(ai-template-gemini/eslint.config.js)`.
+- Ensure code passes ESLint checks based on the flat config: `@file(react-template-ai/eslint.config.js)`.
 
 ## Background Information
 
@@ -34,21 +34,21 @@ This is a React frontend project built with Vite, React 19, TypeScript, Tailwind
 This is a modern React frontend application built with Vite, using TypeScript for type safety, Tailwind CSS v4 for utility-first styling, and shadcn/ui for component design. The project follows a feature-based architecture organized in the `src/features` directory.
 
 ### Core Technologies
-- **React 19**: For component-based UI development. Leverage new features like the `use` hook and potentially Actions where appropriate. [cite: ai-template-gemini/package.json]
-- **TypeScript**: For type safety. Use strict types and avoid `any`. [cite: ai-template-gemini/tsconfig.app.json]
-- **Vite**: For fast development and optimized builds. Config: `@file(ai-template-gemini/vite.config.ts)`.
-- **Tailwind CSS v4**: For utility-first styling. Configuration is CSS-first in `@file(ai-template-gemini/src/index.css)`. [cite: ai-template-gemini/src/index.css]
-- **shadcn/ui**: For high-quality UI components. Configuration: `@file(ai-template-gemini/components.json)`.
+- **React 19**: For component-based UI development. Leverage new features like the `use` hook and potentially Actions where appropriate. [cite: react-template-ai/package.json]
+- **TypeScript**: For type safety. Use strict types and avoid `any`. [cite: react-template-ai/tsconfig.app.json]
+- **Vite**: For fast development and optimized builds. Config: `@file(react-template-ai/vite.config.ts)`.
+- **Tailwind CSS v4**: For utility-first styling. Configuration is CSS-first in `@file(react-template-ai/src/index.css)`. [cite: react-template-ai/src/index.css]
+- **shadcn/ui**: For high-quality UI components. Configuration: `@file(react-template-ai/components.json)`.
 - **React Router**: (Assumed or add if present) For client-side routing.
 - **React Query**: (Assumed or add if present) For data fetching and caching.
 - **Zustand**: (Optional, confirm project usage) For global state management.
-- **ESLint 9 (Flat Config)**: For code linting. Config: `@file(ai-template-gemini/eslint.config.js)`.
+- **ESLint 9 (Flat Config)**: For code linting. Config: `@file(react-template-ai/eslint.config.js)`.
 
 ### Project Architecture
 Organized around features (`src/features/`). Shared code in top-level directories:
 - `src/components/`: Shared UI (includes `ui` from shadcn)
 - `src/hooks/`: Shared hooks
-- `src/lib/`: Core shared utilities (like `cn`) [cite: ai-template-gemini/src/lib/utils.ts]
+- `src/lib/`: Core shared utilities (like `cn`) [cite: react-template-ai/src/lib/utils.ts]
 - `src/utils/`: Other shared utilities
 - `src/context/`: Shared context providers
 - `src/types/`: Shared types
@@ -66,25 +66,25 @@ Organized around features (`src/features/`). Shared code in top-level directorie
 
 ### Styling Approach (Tailwind v4 & Shadcn UI)
 - **Utility-First:** Use Tailwind CSS utility classes directly in JSX `className`.
-- **`cn()` Utility:** ALWAYS use the `cn()` function from `@file(ai-template-gemini/src/lib/utils.ts)` for merging/conditional classes.
-- **Tailwind v4 Config:** Configuration is primarily CSS-based in `@file(ai-template-gemini/src/index.css)` via `@theme`. Avoid edits to `tailwind.config.js` unless adding complex plugins.
-- **CSS Variables:** Utilize the theme CSS variables defined in `@file(ai-template-gemini/src/index.css)` (e.g., `bg-primary`, `text-foreground`).
+- **`cn()` Utility:** ALWAYS use the `cn()` function from `@file(react-template-ai/src/lib/utils.ts)` for merging/conditional classes.
+- **Tailwind v4 Config:** Configuration is primarily CSS-based in `@file(react-template-ai/src/index.css)` via `@theme`. Avoid edits to `tailwind.config.js` unless adding complex plugins.
+- **CSS Variables:** Utilize the theme CSS variables defined in `@file(react-template-ai/src/index.css)` (e.g., `bg-primary`, `text-foreground`).
 - **`size-*` Utility:** Prefer Tailwind's `size-*` utility for elements with equal width/height (e.g., icons) over separate `w-*` and `h-*`.
 - **Shadcn Styling:** Style Shadcn components via `className`. Use `variant` and `size` props. Target internal slots with `data-slot='...'` in CSS if absolutely necessary.
 - **Consistency:** Maintain consistent spacing, typography, and visual hierarchy using Tailwind utilities and theme values.
 
 ### Import Guidelines
 - Use relative imports (`./`, `../`) within the same feature module.
-- Use absolute path aliases (`@/components/...`, `@/hooks/...`, etc.) for shared code across features. Configure aliases in `@file(ai-template-gemini/tsconfig.json)`.
+- Use absolute path aliases (`@/components/...`, `@/hooks/...`, etc.) for shared code across features. Configure aliases in `@file(react-template-ai/tsconfig.json)`.
 - Organize imports: React imports first, then external libraries, then absolute (`@/`) imports, then relative imports.
 
 ## Rules
 
 ### General Rules
-- Always prioritize requirements from `@file(ai-template-gemini/ai/prd.md)` and the implementation sequence from `@file(ai-template-gemini/ai/plan.md)`.
+- Always prioritize requirements from `@file(react-template-ai/ai/prd.md)` and the implementation sequence from `@file(react-template-ai/ai/plan.md)`.
 - Reference existing feature documentation in `@file(ai/docs/)` before creating similar logic.
 - Use TypeScript strictly. Define types clearly.
-- Follow ESLint rules defined in `@file(ai-template-gemini/eslint.config.js)`. Run `npm run lint`.
+- Follow ESLint rules defined in `@file(react-template-ai/eslint.config.js)`. Run `npm run lint`.
 - Document complex logic with comments.
 - Ensure components are accessible (semantic HTML, ARIA attributes where necessary - often handled by Shadcn).
 
@@ -103,13 +103,13 @@ Organized around features (`src/features/`). Shared code in top-level directorie
 
 ### Styling Rules (Tailwind v4 / Shadcn)
 - Apply styles via Tailwind utilities in the `className` prop.
-- ALWAYS use the `cn()` utility from `@file(ai-template-gemini/src/lib/utils.ts)` for class merging.
+- ALWAYS use the `cn()` utility from `@file(react-template-ai/src/lib/utils.ts)` for class merging.
 - Prefer `size-*` over separate `w-*`/`h-*`.
-- Use CSS variables from `@file(ai-template-gemini/src/index.css)` for theme colors/radius.
+- Use CSS variables from `@file(react-template-ai/src/index.css)` for theme colors/radius.
 - Follow a mobile-first responsive approach.
 
 ### Documentation
-- Document new/updated features in `ai/docs/` following `@file(ai-template-gemini/ai/docs/example-feature.md)`.
+- Document new/updated features in `ai/docs/` following `@file(react-template-ai/ai/docs/example-feature.md)`.
 - Include purpose, key components, state management, complex logic, and usage examples.
 - Add JSDoc comments for exported functions/hooks/types.
 

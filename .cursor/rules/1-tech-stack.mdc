@@ -12,17 +12,17 @@ alwaysApply: true
 *
 
 ## Tech Stack
-- **Framework**: React 19 [cite: ai-template-gemini/package.json]
-- **Language**: TypeScript [cite: ai-template-gemini/tsconfig.app.json]
-- **Build Tool**: Vite [cite: ai-template-gemini/vite.config.ts]
-- **Styling**: Tailwind CSS v4 [cite: ai-template-gemini/package.json, ai-template-gemini/src/index.css]
-- **UI Library**: shadcn/ui [cite: ai-template-gemini/components.json]
-- **Linting**: ESLint 9 (Flat Config) [cite: ai-template-gemini/eslint.config.js]
+- **Framework**: React 19 [cite: react-template-ai/package.json]
+- **Language**: TypeScript [cite: react-template-ai/tsconfig.app.json]
+- **Build Tool**: Vite [cite: react-template-ai/vite.config.ts]
+- **Styling**: Tailwind CSS v4 [cite: react-template-ai/package.json, react-template-ai/src/index.css]
+- **UI Library**: shadcn/ui [cite: react-template-ai/components.json]
+- **Linting**: ESLint 9 (Flat Config) [cite: react-template-ai/eslint.config.js]
 - **State Management**: Primarily React Context API and local state. Use Zustand only if explicitly instructed or already present for global state.
 - **Data Fetching**: Primarily React Query (if installed) or native `Workspace` potentially combined with React 19 `use` hook.
 
 ## Key Files for Configuration
-- Vite: `@file(ai-template-gemini/vite.config.ts)`
-- TypeScript: `@file(ai-template-gemini/tsconfig.app.json)`, `@file(ai-template-gemini/tsconfig.node.json)`, `@file(ai-template-gemini/tsconfig.json)`
-- ESLint: `@file(ai-template-gemini/eslint.config.js)`
-- Tailwind/Shadcn: `@file(ai-template-gemini/src/index.css)`, `@file(ai-template-gemini/components.json)`
+- Vite: `@file(react-template-ai/vite.config.ts)`
+- TypeScript: `@file(react-template-ai/tsconfig.app.json)`, `@file(react-template-ai/tsconfig.node.json)`, `@file(react-template-ai/tsconfig.json)`
+- ESLint: `@file(react-template-ai/eslint.config.js)`
+- Tailwind/Shadcn: `@file(react-template-ai/src/index.css)`, `@file(react-template-ai/components.json)`

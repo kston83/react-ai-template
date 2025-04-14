@@ -14,6 +14,6 @@ alwaysApply: true
   - Each feature module should contain subdirectories like `components/`, `hooks/`, `utils/`, `types.ts` as needed.
 - Place shared, reusable UI components (especially Shadcn UI wrappers) in `src/components/`.
 - Place shared custom hooks in `src/hooks/`.
-- Place shared utility functions in `src/lib/` or `src/utils/`. Use `src/lib/utils.ts` for the `cn` function [cite: ai-template-gemini/src/lib/utils.ts].
+- Place shared utility functions in `src/lib/` or `src/utils/`. Use `src/lib/utils.ts` for the `cn` function [cite: react-template-ai/src/lib/utils.ts].
 - Define global types in `src/types/`.
-- Store high-level AI documentation (plans, PRDs, prompts) in the `ai/` directory at the project root [cite: ai-template-gemini/ai/prd.md, ai-template-gemini/ai/plan.md, ai-template-gemini/ai/example-prompts.md].
+- Store high-level AI documentation (plans, PRDs, prompts) in the `ai/` directory at the project root [cite: react-template-ai/ai/prd.md, react-template-ai/ai/plan.md, react-template-ai/ai/example-prompts.md].

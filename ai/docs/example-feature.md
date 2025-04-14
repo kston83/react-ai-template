@@ -4,8 +4,8 @@
 This document provides implementation details for the [Example Feature], built using React 19, Tailwind v4, and Shadcn UI components. It serves as a reference for both developers and AI assistants.
 
 ## Related Documentation
-- **User Stories**: See @file(ai-template-gemini/ai/prd.md) under "[Feature Name]" section
-- **Plan**: See @file(ai-template-gemini/ai/plan.md) under "Phase X" section
+- **User Stories**: See @file(react-template-ai/ai/prd.md) under "[Feature Name]" section
+- **Plan**: See @file(react-template-ai/ai/plan.md) under "Phase X" section
 
 ## Implementation Details
 

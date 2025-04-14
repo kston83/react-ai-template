@@ -66,15 +66,15 @@ This document outlines the requirements and specifications for our frontend appl
 ## Technical Architecture
 
 ### Frontend Technologies
-- **React 19** with TypeScript [cite: ai-template-gemini/package.json, ai-template-gemini/tsconfig.app.json]
-- **Vite** for build tooling [cite: ai-template-gemini/vite.config.ts]
-- **Tailwind CSS v4** for styling [cite: ai-template-gemini/package.json, ai-template-gemini/src/index.css]
-- **shadcn/ui** for UI components [cite: ai-template-gemini/components.json]
+- **React 19** with TypeScript [cite: react-template-ai/package.json, react-template-ai/tsconfig.app.json]
+- **Vite** for build tooling [cite: react-template-ai/vite.config.ts]
+- **Tailwind CSS v4** for styling [cite: react-template-ai/package.json, react-template-ai/src/index.css]
+- **shadcn/ui** for UI components [cite: react-template-ai/components.json]
 - **React Router** for navigation (or specific router)
 - **React Query** for data fetching (or specific library/method)
 - **Zustand** for global state management (optional, confirm project usage)
 - **React Hook Form** with **Zod** for forms (or specific library/method, consider React 19 Actions)
-- **ESLint 9** (Flat Config) for linting [cite: ai-template-gemini/eslint.config.js]
+- **ESLint 9** (Flat Config) for linting [cite: react-template-ai/eslint.config.js]
 - **Vitest** / **React Testing Library** for testing (or specific tools)
 
 ### API Integration
@@ -98,13 +98,13 @@ This document outlines the requirements and specifications for our frontend appl
 - Use Tailwind typography utilities (`text-sm`, `text-lg`, etc.).
 
 ### Colors
-- Defined via CSS variables in `src/index.css` [cite: ai-template-gemini/src/index.css].
+- Defined via CSS variables in `src/index.css` [cite: react-template-ai/src/index.css].
 - Use semantic variable names (e.g., `bg-primary`, `text-destructive`).
-- Leverage Shadcn UI base color theming (`components.json` baseColor) [cite: ai-template-gemini/components.json].
+- Leverage Shadcn UI base color theming (`components.json` baseColor) [cite: react-template-ai/components.json].
 
 ### Components
 - Primarily use pre-built components from `shadcn/ui`.
-- Style using Tailwind utilities via `className` prop and `cn` utility [cite: ai-template-gemini/src/lib/utils.ts].
+- Style using Tailwind utilities via `className` prop and `cn` utility [cite: react-template-ai/src/lib/utils.ts].
 - Build custom composite components following project structure.
 
 ## Analytics and Monitoring

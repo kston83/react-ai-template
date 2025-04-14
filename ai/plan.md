@@ -7,18 +7,18 @@ This implementation plan outlines the phased approach for developing our fronten
 **Goal**: Set up the project infrastructure and core architecture using the current tech stack.
 
 ### 1.1 Project Setup
-- [ ] Initialize Vite with **React 19** and TypeScript [cite: ai-template-gemini/package.json]
-- [ ] Configure ESLint 9 (Flat Config) and Prettier [cite: ai-template-gemini/eslint.config.js]
-- [ ] Set up **Tailwind CSS v4** (CSS-first config via `src/index.css`) [cite: ai-template-gemini/src/index.css]
-- [ ] Install and configure **shadcn/ui** (using `npx shadcn@latest init`, check `components.json`) [cite: ai-template-gemini/components.json]
+- [ ] Initialize Vite with **React 19** and TypeScript [cite: react-template-ai/package.json]
+- [ ] Configure ESLint 9 (Flat Config) and Prettier [cite: react-template-ai/eslint.config.js]
+- [ ] Set up **Tailwind CSS v4** (CSS-first config via `src/index.css`) [cite: react-template-ai/src/index.css]
+- [ ] Install and configure **shadcn/ui** (using `npx shadcn@latest init`, check `components.json`) [cite: react-template-ai/components.json]
 - [ ] Configure React Router (or chosen router)
-- [ ] Create basic project structure (`src/features`, `src/components`, etc.) [cite: ai-template-gemini/README.md]
+- [ ] Create basic project structure (`src/features`, `src/components`, etc.) [cite: react-template-ai/README.md]
 
 ### 1.2 Layout Framework
 - [ ] Create main layout components
 - [ ] Implement responsive container system using Tailwind v4 utilities
 - [ ] Create base navigation components using Shadcn UI
-- [ ] Setup dark/light theme toggle (leveraging Tailwind dark variant and CSS vars from `src/index.css` [cite: ai-template-gemini/src/index.css])
+- [ ] Setup dark/light theme toggle (leveraging Tailwind dark variant and CSS vars from `src/index.css` [cite: react-template-ai/src/index.css])
 - [ ] Create error boundaries using React patterns
 
 ### 1.3 Core Components
@@ -118,7 +118,7 @@ This implementation plan outlines the phased approach for developing our fronten
 ## Implementation Guidelines
 
 ### For Each Feature:
-1.  **Plan First**: Define requirements (ref `@file(ai-template-gemini/ai/prd.md)`), break down tasks.
+1.  **Plan First**: Define requirements (ref `@file(react-template-ai/ai/prd.md)`), break down tasks.
 2.  **Data Layer**: Define types, set up hooks (using React 19 `use` or React Query).
 3.  **Component Dev**: Build components using Shadcn/Tailwind v4, follow structure/patterns.
 4.  **Testing**: Write tests (Vitest/RTL).
@@ -128,4 +128,4 @@ This implementation plan outlines the phased approach for developing our fronten
 1. Feature branch -> PR -> Review -> Merge to `development` -> Release to `main`.
 
 ### Definition of Done:
-- Meets requirements, passes linting/types/tests, docs updated (`@file(ai-template-gemini/ai/docs/)`), accessibility verified, performance acceptable, reviewed.
+- Meets requirements, passes linting/types/tests, docs updated (`@file(react-template-ai/ai/docs/)`), accessibility verified, performance acceptable, reviewed.

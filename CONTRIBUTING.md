@@ -21,14 +21,14 @@ Thank you for your interest in contributing to this project! This guide will hel
 
 ## Project Structure
 
-Please familiarize yourself with the project structure as outlined in the `README.md` and the AI guidance rules in the `.cursor/rules/` directory [cite: ai-template-gemini/README.md]. This will help you understand where new code should be placed.
+Please familiarize yourself with the project structure as outlined in the `README.md` and the AI guidance rules in the `.cursor/rules/` directory [cite: react-template-ai/README.md]. This will help you understand where new code should be placed.
 
 Key directories:
 - `.cursor/rules/`: AI guidance files (essential context for AI tools)
-- `ai/`: High-level documentation (PRD, Plan, Prompts) [cite: ai-template-gemini/ai/prd.md, ai-template-gemini/ai/plan.md, ai-template-gemini/ai/example-prompts.md]
-- `src/features/[feature-name]`: Self-contained feature modules [cite: ai-template-gemini/ai/docs/example-feature.md]
-- `src/components/`: Shared components, including `ui` from shadcn [cite: ai-template-gemini/components.json]
-- `src/lib/`: Shared utilities like `cn` [cite: ai-template-gemini/src/lib/utils.ts]
+- `ai/`: High-level documentation (PRD, Plan, Prompts) [cite: react-template-ai/ai/prd.md, react-template-ai/ai/plan.md, react-template-ai/ai/example-prompts.md]
+- `src/features/[feature-name]`: Self-contained feature modules [cite: react-template-ai/ai/docs/example-feature.md]
+- `src/components/`: Shared components, including `ui` from shadcn [cite: react-template-ai/components.json]
+- `src/lib/`: Shared utilities like `cn` [cite: react-template-ai/src/lib/utils.ts]
 
 ## Adding Features
 
@@ -41,7 +41,7 @@ When adding new features, follow these guidelines:
     - Utils in `utils/`
     - Types in `types.ts`
 3.  Adhere to React 19 and Tailwind v4 patterns described in `.cursor/rules/`.
-4.  Document your feature in `ai/docs/[feature-name].md` following the example [cite: ai-template-gemini/ai/docs/example-feature.md].
+4.  Document your feature in `ai/docs/[feature-name].md` following the example [cite: react-template-ai/ai/docs/example-feature.md].
 
 ## Pull Request Process
 
@@ -66,7 +66,7 @@ When adding new features, follow these guidelines:
 
 ## Code Standards
 
-- Follow TypeScript guidelines (see `tsconfig.app.json`) [cite: ai-template-gemini/tsconfig.app.json]
+- Follow TypeScript guidelines (see `tsconfig.app.json`) [cite: react-template-ai/tsconfig.app.json]
 - Write tests for all new functionality
 - Document your code with JSDoc comments where appropriate
 - Keep components focused and composable

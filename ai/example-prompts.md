@@ -27,7 +27,7 @@ Create a reusable Modal component wrapper around Shadcn UI's Dialog component, f
 - Accept `isOpen`, `onOpenChange`, `title`, `description`, `children` (for body), and `footerContent` props
 - Render the Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter parts appropriately
 - Ensure proper accessibility attributes are handled by the underlying Shadcn component
-- Use the `cn` utility from @file(ai-template-gemini/src/lib/utils.ts) for merging class names
+- Use the `cn` utility from @file(react-template-ai/src/lib/utils.ts) for merging class names
 - Place this component in `src/components/ui/modal.tsx`
 - Include tests following @file(.cursor/rules/5-testing-patterns.md)
 
@@ -73,7 +73,7 @@ Create comprehensive tests for the Shadcn Button component usage in `src/feature
 
 ## Documentation Creation
 
-Create documentation for the `todoList` feature in the AI docs directory, following the example structure in @file(ai-template-gemini/ai/docs/example-feature.md). Ensure implementation details reflect React 19 patterns and Tailwind v4/Shadcn usage.
+Create documentation for the `todoList` feature in the AI docs directory, following the example structure in @file(react-template-ai/ai/docs/example-feature.md). Ensure implementation details reflect React 19 patterns and Tailwind v4/Shadcn usage.
 
 ## Form Handling (with React 19 Actions Example)
 
@@ -107,6 +107,6 @@ Follow the typing patterns used in the project (`src/features/[feature]/types.ts
 Style the `DashboardLayout` component in `src/layouts/DashboardLayout.tsx` using Tailwind CSS v4:
 
 - Implement a responsive sidebar and main content area
-- Use CSS variables defined in @file(ai-template-gemini/src/index.css) for theming where appropriate
+- Use CSS variables defined in @file(react-template-ai/src/index.css) for theming where appropriate
 - Ensure it adheres to @file(.cursor/rules/4-styling-patterns.md)
 - Prefer `size-*` utilities for icons or fixed-size elements

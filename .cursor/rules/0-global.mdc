@@ -13,7 +13,7 @@ alwaysApply: true
 - Follow functional programming principles where appropriate.
 - Keep functions small and focused.
 - Add JSDoc comments for complex functions and hooks.
-- Ensure all generated code passes ESLint checks based on `@file(ai-template-gemini/eslint.config.js)`.
+- Ensure all generated code passes ESLint checks based on `@file(react-template-ai/eslint.config.js)`.
 - Adhere to the project structure defined in `@file(.cursor/rules/2-structure.md)`.
 - Use American English for all comments and documentation.
 - Prioritize readability and maintainability.
