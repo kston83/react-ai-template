@@ -25,6 +25,7 @@ This template is specifically engineered to optimize the developer experience wh
 <p align="center">
 <img width="921" alt="image" src="https://github.com/user-attachments/assets/685cf435-d576-4c65-9fd0-8d1d935e8f2d" />
 </p>
+
 ## Features
 
 - **AI-Optimized Structure**: Clear organization patterns that AI tools can consistently follow (see `.cursor/rules/`)
