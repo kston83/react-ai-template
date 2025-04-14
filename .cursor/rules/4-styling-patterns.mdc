@@ -4,13 +4,10 @@ globs:
 alwaysApply: true
 ---
 ---
-description: Guidelines for documenting features and code.
+description: Guidelines for styling using Tailwind CSS v4 and Shadcn UI.
 globs: 
 alwaysApply: true
 ---
-## Description
-Guidelines for styling using Tailwind CSS v4 and Shadcn UI.
-
 ## Files
 src/**/*.tsx
 src/index.css
