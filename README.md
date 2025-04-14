@@ -22,6 +22,8 @@
 
 This template is specifically engineered to optimize the developer experience when working with AI coding assistants like GitHub Copilot, Cursor, or similar tools. It provides a structured, feature-based architecture with clear conventions that AI tools can understand and follow consistently, leveraging the latest features of React 19 and Tailwind CSS v4.
 
+
+
 ## Features
 
 - **AI-Optimized Structure**: Clear organization patterns that AI tools can consistently follow (see `.cursor/rules/`)
