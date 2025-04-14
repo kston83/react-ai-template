@@ -22,7 +22,7 @@
 
 This template is specifically engineered to optimize the developer experience when working with AI coding assistants like GitHub Copilot, Cursor, or similar tools. It provides a structured, feature-based architecture with clear conventions that AI tools can understand and follow consistently, leveraging the latest features of React 19 and Tailwind CSS v4.
 
-<p align="center>
+<p align="center">
 <img width="921" alt="image" src="https://github.com/user-attachments/assets/685cf435-d576-4c65-9fd0-8d1d935e8f2d" />
 </p>
 ## Features
