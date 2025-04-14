@@ -1,77 +1,83 @@
 # Contributing to the AI-Ready React Template
 
-Thank you for your interest in contributing to this project! This guide will help you get started with the development process.
+Thank you for your interest in contributing to this project! This guide will help you get started with the development process for this React 19 / Tailwind v4 template.
 
 ## Development Setup
 
-1. Fork the repository
-2. Clone your fork:
-   ```bash
-   git clone https://github.com/your-username/ai-ready-react-template.git
-   cd ai-ready-react-template
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
+1.  Fork the repository
+2.  Clone your fork:
+    ```bash
+    git clone [https://github.com/your-username/ai-ready-react-template.git](https://github.com/your-username/ai-ready-react-template.git)
+    cd ai-ready-react-template
+    ```
+3.  Install dependencies:
+    ```bash
+    npm install
+    ```
+4.  Start the development server:
+    ```bash
+    npm run dev
+    ```
 
 ## Project Structure
 
-Please familiarize yourself with the project structure as outlined in the README.md and the `.cursor/rules/` directory. This will help you understand where new code should be placed.
+Please familiarize yourself with the project structure as outlined in the `README.md` and the AI guidance rules in the `.cursor/rules/` directory [cite: ai-template-gemini/README.md]. This will help you understand where new code should be placed.
+
+Key directories:
+- `.cursor/rules/`: AI guidance files (essential context for AI tools)
+- `ai/`: High-level documentation (PRD, Plan, Prompts) [cite: ai-template-gemini/ai/prd.md, ai-template-gemini/ai/plan.md, ai-template-gemini/ai/example-prompts.md]
+- `src/features/[feature-name]`: Self-contained feature modules [cite: ai-template-gemini/ai/docs/example-feature.md]
+- `src/components/`: Shared components, including `ui` from shadcn [cite: ai-template-gemini/components.json]
+- `src/lib/`: Shared utilities like `cn` [cite: ai-template-gemini/src/lib/utils.ts]
 
 ## Adding Features
 
 When adding new features, follow these guidelines:
 
-1. Create a new feature directory in `src/features/[feature-name]`
-2. Structure your feature following the established patterns:
-   - Components in `components/`
-   - Hooks in `hooks/`
-   - Utils in `utils/`
-   - Types in `types.ts`
-3. Document your feature in `ai/docs/[feature-name].md`
+1.  Create a new feature directory in `src/features/[feature-name]`
+2.  Structure your feature following the established patterns (see `.cursor/rules/2-structure.md`):
+    - Components in `components/`
+    - Hooks in `hooks/`
+    - Utils in `utils/`
+    - Types in `types.ts`
+3.  Adhere to React 19 and Tailwind v4 patterns described in `.cursor/rules/`.
+4.  Document your feature in `ai/docs/[feature-name].md` following the example [cite: ai-template-gemini/ai/docs/example-feature.md].
 
 ## Pull Request Process
 
-1. Create a branch for your changes:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-2. Make your changes following the project's coding standards
-3. Add tests for your changes
-4. Update documentation as necessary
-5. Ensure all tests pass:
-   ```bash
-   npm run test
-   ```
-6. Commit your changes with a descriptive commit message
-7. Push your branch to your fork:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-8. Create a Pull Request against the main repository
+1.  Create a branch for your changes:
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+2.  Make your changes following the project's coding standards (refer to `.cursor/rules/`)
+3.  Add tests for your changes (see `.cursor/rules/5-testing-patterns.md`)
+4.  Update documentation as necessary (`ai/docs/`, relevant `.cursor/rules/` if patterns change)
+5.  Ensure all checks pass (linting, tests):
+    ```bash
+    npm run lint
+    npm run test # Add test script if you have one
+    ```
+6.  Commit your changes with a descriptive commit message (Conventional Commits preferred)
+7.  Push your branch to your fork:
+    ```bash
+    git push origin feature/your-feature-name
+    ```
+8.  Create a Pull Request against the main repository
 
 ## Code Standards
 
-- Follow the TypeScript guidelines in the project
+- Follow TypeScript guidelines (see `tsconfig.app.json`) [cite: ai-template-gemini/tsconfig.app.json]
 - Write tests for all new functionality
-- Document your code with JSDoc comments
+- Document your code with JSDoc comments where appropriate
 - Keep components focused and composable
-- Follow the established patterns in the codebase
+- Follow the established patterns in the codebase and `.cursor/rules/`
 
 ## Testing
 
-- Write tests for components, hooks, and utilities
-- Co-locate tests with the code they test
-- Follow the testing patterns in `.cursor/rules/4-testing.mdc`
-- Run tests before submitting PRs:
-  ```bash
-  npm run test
-  ```
+- Write tests using the project's testing framework (e.g., Vitest/RTL)
+- Co-locate tests with the code they test (e.g., `ComponentName.test.tsx`)
+- Follow the testing patterns outlined in `.cursor/rules/5-testing-patterns.md`
+- Run tests before submitting PRs
 
 ## Commit Messages
 
@@ -79,7 +85,7 @@ Follow the [Conventional Commits](https://www.conventionalcommits.org/) specific
 
 - `feat:` New features
 - `fix:` Bug fixes
-- `docs:` Documentation changes
+- `docs:` Documentation changes (including `.cursor/rules/` and `ai/`)
 - `style:` Code style changes (formatting, etc)
 - `refactor:` Code changes that neither fix bugs nor add features
 - `test:` Adding or updating tests

@@ -1,0 +1,27 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Guidelines for writing React 19 components and hooks.
+globs: 
+alwaysApply: true
+---
+## Files
+src/**/*.tsx
+src/**/*.ts
+
+## Rules
+- **Function Components:** Always use function components.
+- **No Default React Import:** DO NOT import `React` by default (e.g., `import React from 'react'`). Import specific APIs like `useState`, `useEffect`, `useContext`, `use` directly.
+- **`use` Hook:** DO use the `use` hook to read the value of promises or context within components or other hooks. This is preferred for integrating with Suspense.
+- **Hooks:** Follow the Rules of Hooks. Extract reusable stateful logic into custom hooks, placed in `src/hooks/` or `src/features/[feature]/hooks/`.
+- **State Management:** Use `useState` for local component state. Use `useContext` for sharing state within a feature subtree. Consider Zustand for complex global state if already set up.
+- **Props:** Use TypeScript interfaces for defining component props. Keep prop interfaces specific and clear.
+- **Keys:** Always provide stable `key` props when rendering lists.
+- **Actions:** If using React 19 Actions for forms/mutations:
+    - Define server actions appropriately.
+    - Use `useActionState` to manage form state and errors.
+    - Use `useFormStatus` to handle pending states within forms.
+- **forwardRef:** Avoid using `React.forwardRef` directly with Shadcn UI components, as newer versions handle refs differently with React 19. Pass `ref` as a normal prop if needed by a custom component wrapping a primitive.
