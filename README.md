@@ -1,7 +1,7 @@
 # AI-Ready React Template
 
 <p align="center">
-  <img src="public/vite.svg" alt="AI-Ready React Template" width="100" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Vitejs-logo.svg" alt="AI-Ready React Template" width="100" />
 </p>
 
 <p align="center">
