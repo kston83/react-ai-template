@@ -1,150 +1,135 @@
+# AI Rules for React 19 / Tailwind v4 / Shadcn UI Template
+
 # General Information
 
-This is a React frontend project built with Vite, Tailwind CSS, and shadcn/ui. Always consider the following background information and guidelines when implementing features.
+This is a React frontend project built with Vite, React 19, TypeScript, Tailwind CSS v4, and shadcn/ui. Always consider the following background information and guidelines when implementing features. Adhere strictly to the patterns and configurations defined in this project.
 
 ## Quick Reference
 
-### Common Patterns
-- Define features in `src/features/{featureName}`
-- Use shadcn components from `src/components/ui`
-- Create custom layout components in `src/components/layout`
-- Create reusable hooks in `src/hooks`
-- Document features in `ai/docs/{featureName}.md`
-- Feature code should include:
-  - Components in `components/`
-  - Feature-specific hooks in `hooks/`
-  - Utilities in `utils/` if needed
-  - Types in `types.ts`
-- Reference the relevant `ai/docs` files when writing or modifying feature code
+### Common Patterns & Structure
+- Define features in `src/features/{featureName}`. [cite: ai-template-gemini/README.md]
+- Use shadcn components from `src/components/ui/` where appropriate. [cite: ai-template-gemini/components.json]
+- Create custom shared layout components in `src/components/layout/`.
+- Create reusable shared hooks in `src/hooks/`.
+- Document features in `ai/docs/{featureName}.md` following the example `@file(ai-template-gemini/ai/docs/example-feature.md)`.
+- Feature code structure (`src/features/{featureName}/`): [cite: ai-template-gemini/CONTRIBUTING.md]
+  - `components/`
+  - `hooks/`
+  - `utils/` (if needed)
+  - `types.ts`
+- Reference the relevant `@file(ai/docs/)`, `@file(ai/prd.md)`, and `@file(ai/plan.md)` files when writing or modifying feature code.
+- Use the `cn()` utility from `@file(ai-template-gemini/src/lib/utils.ts)` for merging Tailwind classes.
 
-### Common Issues
-- If shadcn components aren't rendering correctly, check that the component is properly added
-- Use relative imports for components inside features
-- For shared components, import from the root components directory
-- Use React Query for data fetching where appropriate
-- Use React Context sparingly for global state
+### Common Issues & Checks
+- If shadcn components aren't rendering correctly, ensure they were added via the CLI (`npx shadcn-ui@latest add ...`) and check `@file(ai-template-gemini/components.json)`.
+- Use relative imports for components inside the same feature module.
+- For shared components/hooks/utils, use absolute imports configured via `@/*` path alias (see `@file(ai-template-gemini/tsconfig.json)`).
+- Use React Query (if installed/configured) for data fetching, potentially leveraging the React 19 `use` hook for Suspense integration.
+- Use React Context sparingly; prefer component composition or feature-level hooks.
+- Ensure code passes ESLint checks based on the flat config: `@file(ai-template-gemini/eslint.config.js)`.
 
 ## Background Information
 
 ### Project Overview
-This is a modern React frontend application built with Vite, using TypeScript for type safety, Tailwind CSS for styling, and shadcn/ui for component design. The project follows a feature-based architecture where each feature is self-contained and organized in the `src/features` directory.
+This is a modern React frontend application built with Vite, using TypeScript for type safety, Tailwind CSS v4 for utility-first styling, and shadcn/ui for component design. The project follows a feature-based architecture organized in the `src/features` directory.
 
 ### Core Technologies
-- **React 18**: For component-based UI development
-- **TypeScript**: For type safety
-- **Vite**: For fast development and optimized builds
-- **Tailwind CSS**: For utility-first styling
-- **shadcn/ui**: For high-quality UI components
-- **React Router**: For client-side routing
-- **React Query**: For data fetching and caching
-- **Zustand**: For state management (if needed)
+- **React 19**: For component-based UI development. Leverage new features like the `use` hook and potentially Actions where appropriate. [cite: ai-template-gemini/package.json]
+- **TypeScript**: For type safety. Use strict types and avoid `any`. [cite: ai-template-gemini/tsconfig.app.json]
+- **Vite**: For fast development and optimized builds. Config: `@file(ai-template-gemini/vite.config.ts)`.
+- **Tailwind CSS v4**: For utility-first styling. Configuration is CSS-first in `@file(ai-template-gemini/src/index.css)`. [cite: ai-template-gemini/src/index.css]
+- **shadcn/ui**: For high-quality UI components. Configuration: `@file(ai-template-gemini/components.json)`.
+- **React Router**: (Assumed or add if present) For client-side routing.
+- **React Query**: (Assumed or add if present) For data fetching and caching.
+- **Zustand**: (Optional, confirm project usage) For global state management.
+- **ESLint 9 (Flat Config)**: For code linting. Config: `@file(ai-template-gemini/eslint.config.js)`.
 
 ### Project Architecture
-The application is organized around features, with each feature containing its own components, hooks, and utilities. Shared code resides in the appropriate top-level directories:
+Organized around features (`src/features/`). Shared code in top-level directories:
+- `src/components/`: Shared UI (includes `ui` from shadcn)
+- `src/hooks/`: Shared hooks
+- `src/lib/`: Core shared utilities (like `cn`) [cite: ai-template-gemini/src/lib/utils.ts]
+- `src/utils/`: Other shared utilities
+- `src/context/`: Shared context providers
+- `src/types/`: Shared types
 
-- `/src/components`: Shared, reusable UI components
-- `/src/hooks`: Shared React hooks
-- `/src/utils`: Utility functions used across features
-- `/src/context`: React context providers for global state
-- `/src/lib`: Third-party library integrations
-- `/src/types`: Shared TypeScript types
+### Component Best Practices (React 19 Focus)
+- **Function Components & Hooks:** Use functional components and hooks exclusively. Follow the Rules of Hooks.
+- **No Default React Import:** DO NOT `import React from 'react'`. Import named APIs like `useState`, `useEffect`, `use` directly.
+- **`use` Hook:** Utilize the `use` hook for reading promises (integrating with Suspense) and context where appropriate.
+- **Composition:** Prefer composition over inheritance. Keep components small and focused.
+- **TypeScript:** Define props interfaces clearly. Avoid `any`.
+- **Shadcn UI:** Use shadcn/ui components first. Style them via `className` and the `cn` utility.
+- **Naming:** PascalCase for components, camelCase for hooks/functions.
+- **Error/Loading States:** Implement proper error boundaries and loading states (Suspense is preferred with the `use` hook).
+- **`forwardRef`:** Avoid explicit `React.forwardRef` with Shadcn components; they generally handle refs directly in React 19 compatible versions.
 
-Each feature should be self-contained in the `/src/features/{featureName}` directory and should include everything needed for that feature to function.
-
-### Component Best Practices
-- Use functional components with hooks
-- Practice composition over inheritance
-- Keep components small and focused on a single responsibility
-- Use TypeScript properly: define props interfaces, use proper return types
-- Use shadcn/ui components whenever possible before building custom ones
-- Follow consistent naming conventions (PascalCase for components)
-- Implement proper error boundaries and loading states
-
-### Styling Approach
-- Use Tailwind CSS utility classes directly in JSX for styling
-- Leverage the shadcn/ui theming system
-- Avoid CSS-in-JS or separate CSS files unless absolutely necessary
-- Keep styling consistent with the design system
-- Use the `cn()` utility for conditional class names
-- Customize global theme in `tailwind.config.js`
+### Styling Approach (Tailwind v4 & Shadcn UI)
+- **Utility-First:** Use Tailwind CSS utility classes directly in JSX `className`.
+- **`cn()` Utility:** ALWAYS use the `cn()` function from `@file(ai-template-gemini/src/lib/utils.ts)` for merging/conditional classes.
+- **Tailwind v4 Config:** Configuration is primarily CSS-based in `@file(ai-template-gemini/src/index.css)` via `@theme`. Avoid edits to `tailwind.config.js` unless adding complex plugins.
+- **CSS Variables:** Utilize the theme CSS variables defined in `@file(ai-template-gemini/src/index.css)` (e.g., `bg-primary`, `text-foreground`).
+- **`size-*` Utility:** Prefer Tailwind's `size-*` utility for elements with equal width/height (e.g., icons) over separate `w-*` and `h-*`.
+- **Shadcn Styling:** Style Shadcn components via `className`. Use `variant` and `size` props. Target internal slots with `data-slot='...'` in CSS if absolutely necessary.
+- **Consistency:** Maintain consistent spacing, typography, and visual hierarchy using Tailwind utilities and theme values.
 
 ### Import Guidelines
-- Use relative imports for files within the same feature
-- Use absolute imports from the root directories for shared code
-- Avoid deep imports from libraries that don't support them
-- Organize imports consistently: React, libraries, local imports
-- Keep the number of imports manageable; consider combining imports
+- Use relative imports (`./`, `../`) within the same feature module.
+- Use absolute path aliases (`@/components/...`, `@/hooks/...`, etc.) for shared code across features. Configure aliases in `@file(ai-template-gemini/tsconfig.json)`.
+- Organize imports: React imports first, then external libraries, then absolute (`@/`) imports, then relative imports.
 
 ## Rules
 
 ### General Rules
-- Always reference the project plan in `ai/plan.md` as your source of truth for implementation priorities
-- Always reference `ai/docs` for information on implemented features
-- Use TypeScript properly with appropriate type definitions
-- Follow a consistent code style
-- Document complex logic or non-obvious design decisions
-- Ensure all components have proper accessibility attributes
+- Always prioritize requirements from `@file(ai-template-gemini/ai/prd.md)` and the implementation sequence from `@file(ai-template-gemini/ai/plan.md)`.
+- Reference existing feature documentation in `@file(ai/docs/)` before creating similar logic.
+- Use TypeScript strictly. Define types clearly.
+- Follow ESLint rules defined in `@file(ai-template-gemini/eslint.config.js)`. Run `npm run lint`.
+- Document complex logic with comments.
+- Ensure components are accessible (semantic HTML, ARIA attributes where necessary - often handled by Shadcn).
 
-### Component Rules
-- Use functional components with hooks
-- Define prop types explicitly with TypeScript interfaces
-- Provide sensible defaults for optional props
-- Avoid using `any` type; be specific with your types
-- Extract complex logic into custom hooks
-- Keep components focused on UI concerns, move business logic to hooks
+### Component Rules (React 19)
+- Use functional components with hooks. DO NOT import `React` by default.
+- Use the `use` hook for integrating promises/context with Suspense.
+- Define prop types explicitly using TypeScript interfaces.
+- Avoid `any`. Extract complex logic into custom hooks (`src/hooks` or `src/features/[name]/hooks`).
+- Keep components focused on rendering UI.
+- Do not use `React.forwardRef` with Shadcn components directly.
 
 ### Feature Organization
-- Keep all feature code in `src/features/{featureName}`
-- For each feature, organize code into appropriate subdirectories:
-  - `components/`: Feature-specific UI components
-  - `hooks/`: Feature-specific custom hooks
-  - `utils/`: Feature-specific utilities
-  - `types.ts`: Type definitions for the feature
-  - `index.ts`: Export main components and functions
+- All feature code resides within `src/features/{featureName}`.
+- Use standard subdirectories: `components`, `hooks`, `utils`, `types.ts`.
+- Export necessary items from an `index.ts` file within the feature directory if needed for use in routing or other features.
 
-### Styling Rules
-- Use Tailwind CSS utility classes directly in JSX
-- Follow a mobile-first approach for responsive designs
-- Use the `cn()` utility function for conditional class names
-- Maintain a consistent visual hierarchy and spacing
-- Follow accessibility best practices for colors, contrast, and focus states
+### Styling Rules (Tailwind v4 / Shadcn)
+- Apply styles via Tailwind utilities in the `className` prop.
+- ALWAYS use the `cn()` utility from `@file(ai-template-gemini/src/lib/utils.ts)` for class merging.
+- Prefer `size-*` over separate `w-*`/`h-*`.
+- Use CSS variables from `@file(ai-template-gemini/src/index.css)` for theme colors/radius.
+- Follow a mobile-first responsive approach.
 
 ### Documentation
-- Document completed features in `ai/docs/{featureName}.md`
-- Update documentation when changing existing features
-- Include the following in feature documentation:
-  - Purpose and functionality
-  - Key components and their interactions
-  - State management approach
-  - Any complex logic or algorithms
-  - Known limitations or future improvements
+- Document new/updated features in `ai/docs/` following `@file(ai-template-gemini/ai/docs/example-feature.md)`.
+- Include purpose, key components, state management, complex logic, and usage examples.
+- Add JSDoc comments for exported functions/hooks/types.
 
-# Testing Rules
+# Testing Rules (Vitest / RTL)
 
 ### General Testing Rules
-- Unit tests should be co-located with the code they're testing
-- Use Vitest with React Testing Library for testing React components
-- Component tests should use semantic queries (getByRole, getByLabelText) over implementation-specific selectors
-- Follow the Arrange-Act-Assert pattern in tests
-- Mock external dependencies and focus on testing behavior, not implementation details
-- Test files should follow the naming convention: `[filename].test.ts(x)`
-- Test coverage should prioritize critical business logic and user-facing components
+- Co-locate tests (`[filename].test.tsx`).
+- Use Vitest and React Testing Library (RTL).
+- Test behavior, not implementation. Use accessible queries (getByRole, etc.).
+- Follow Arrange-Act-Assert. Mock dependencies using `vi.mock`.
+- Prioritize testing critical paths and user interactions.
 
 ### Component Testing Rules
-- Test behavior rather than implementation details
-- Use `userEvent` over `fireEvent` when possible for better simulation of real interactions
-- Test accessibility considerations when appropriate
-- Ensure components handle edge cases properly (empty states, loading states, error states)
+- Use `userEvent` for interactions. Test different props, states (loading, error, empty), and accessibility.
 
 ### Hook Testing Rules
-- Use `renderHook` from React Testing Library to test custom hooks
-- Always wrap state updates in `act`
-- Test all functions returned by the hook
-- Verify initial values and state transitions
+- Use `renderHook` from RTL. Wrap state updates in `act`. Test initial state, updates, and returned functions.
 
 ### Utility Testing Rules
-- Focus on input/output assertions for pure functions
-- Test edge cases thoroughly (empty values, null, undefined, etc.)
-- Group related tests with descriptive `describe` blocks
+- Test pure functions with input/output assertions. Cover edge cases.
 
-Keep this `.cursorrules` file updated with any new project conventions or best practices.
+---
+Keep this `.cursorrules` file (or the files within `.cursor/rules/` if you migrate) updated with any new project conventions or best practices.
