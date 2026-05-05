@@ -35,7 +35,7 @@ React 19, TypeScript 5.7 (strict), Vite 6, Tailwind CSS v4 (`@tailwindcss/vite`)
 
 ## Constraints
 
-- Never `import React from 'react'` — named imports only
+- Never `import React from 'react'` — named imports only (exception: shadcn component files may use `import * as React`)
 - `cn()` from `@/lib/utils` for all class merging
 - Tailwind `size-*` over separate `w-*`/`h-*` for equal dimensions
 - Tailwind config is CSS-first in `src/index.css` via `@theme` — no `tailwind.config.js`
@@ -47,7 +47,7 @@ React 19, TypeScript 5.7 (strict), Vite 6, Tailwind CSS v4 (`@tailwindcss/vite`)
 ## Enforcement
 
 - **Commit-time**: husky + lint-staged runs `eslint --fix` on staged `.ts`/`.tsx` files
-- **Claude Code**: `.claude/settings.json` hooks enforce lint-on-edit, protect sensitive files, and block dangerous commands
+- **AI agents**: `.claude/settings.json` hooks (Claude Code), `.github/copilot-instructions.md` (Copilot), and `AGENTS.md` (OpenCode / general) provide agent-specific guidance
 - **CI**: lint + build must pass
 
 ## References
@@ -55,4 +55,4 @@ React 19, TypeScript 5.7 (strict), Vite 6, Tailwind CSS v4 (`@tailwindcss/vite`)
 - `ai/prd.md` — product requirements
 - `ai/plan.md` — implementation plan
 - `ai/docs/{feature}.md` — feature documentation (see `ai/docs/example-feature.md`)
-- `.claude/rules/` — path-scoped rules (loaded only near matching files)
+- `.claude/rules/` — path-scoped rules (Claude Code; loaded only near matching files)
