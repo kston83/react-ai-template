@@ -28,11 +28,11 @@ This template is specifically engineered to optimize the developer experience wh
 
 ## Features
 
-- **AI-Optimized Structure**: Clear organization patterns that AI tools can consistently follow (see `.cursor/rules/`)
+- **AI-Optimized Structure**: Clear organization patterns that AI tools can consistently follow (see `.claude/rules/`, `.github/copilot-instructions.md`, `AGENTS.md`)
 - **Feature-Based Architecture**: Self-contained feature modules for intuitive code organization
 - **Scalable Patterns**: Well-documented patterns for React 19 hooks, components, and state management
-- **Developer Experience**: Modern tooling with TypeScript, ESLint 9 (flat config), Vite, and structured testing
-- **Comprehensive Guidelines**: Detailed rules in `.cursor/rules/` and `ai/` directory serve as documentation for both developers and AI
+- **Developer Experience**: Modern tooling with TypeScript, ESLint 9 (flat config), Vite, and Husky/lint-staged
+- **Comprehensive Guidelines**: Detailed rules in `.claude/rules/`, `AGENTS.md`, and `ai/` directory serve as documentation for both developers and AI
 - **Phased Implementation Plan**: Clear roadmap for implementing features in a structured way
 
 ## Getting Started
@@ -63,22 +63,21 @@ Visit http://localhost:5173 to view your application.
 ## Project Structure
 
 ```
-.cursor/rules/      # AI guidance rules (Recommended: create if not present)
+.claude/rules/      # AI guidance rules (Claude Code)
+.github/            # GitHub Copilot instructions
 ai/                 # AI-related documentation (PRDs, Plans, Prompts)
 src/
-├── components/       # Shared UI components (usually shadcn/ui)
-├── context/          # React context providers
+├── components/       # Shared components
+│   ├── layout/       # Layout components (e.g., mode-toggle)
+│   ├── providers/    # React context providers (e.g., theme-provider)
+│   └── ui/           # shadcn/ui components
 ├── features/         # Feature modules
 │   └── [feature-name]/
 │       ├── components/
 │       ├── hooks/
 │       ├── utils/
 │       └── types.ts
-├── hooks/            # Shared custom hooks
-├── lib/              # Shared libraries (e.g., utils.ts)
-├── styles/           # Global styles (usually just index.css)
-├── types/            # Global TypeScript type definitions
-└── utils/            # Global utility functions
+└── lib/              # Shared libraries (e.g., utils.ts with cn())
 ```
 
 ## Key Architectural Patterns
@@ -86,7 +85,7 @@ src/
 - **Feature-Based Organization**: Features are encapsulated in self-contained modules.
 - **Component Composition**: Build complex UIs with composable, focused components using Shadcn UI and Tailwind v4.
 - **Custom Hooks & React 19**: Extract business logic into reusable hooks, leveraging React 19 features like the use hook where appropriate.
-- **Tiered State Management**: Clear guidelines for local, feature (Context API), and potentially global state (e.g., Zustand).
+- **Tiered State Management**: Clear guidelines for local and feature-level (Context API) state.
 
 ## Development with AI
 
@@ -94,30 +93,27 @@ src/
 
 1. **Plan First**: Begin with a clear plan (see ai/plan.md).
 2. **Use Structure**: Follow the feature-based organization for new code.
-3. **Reference Guidelines**: AI should reference `.cursor/rules/` for project conventions and patterns.
+3. **Reference Guidelines**: AI should reference `.claude/rules/`, `AGENTS.md`, or `.github/copilot-instructions.md` for project conventions and patterns.
 4. **Document As You Go**: Add documentation for completed features in `ai/docs/` following the example.
 
 ### Effective AI Prompts
 
-When working with AI coding assistants, provide context by referencing the rules directory:
+When working with AI coding assistants, provide context by referencing the guidance files:
 
-- "Following the project structure in `.cursor/rules/2-structure.md` and React patterns in `.cursor/rules/3-react-patterns.md`, create a new feature called [name] that..."
-- "Based on the styling patterns in `.cursor/rules/4-styling-patterns.md`, style the [ComponentName] using Tailwind CSS v4 utilities. Use `size-*` instead of `w-*` and `h-*`."
-- "Create a hook `useAsyncData` that uses the React 19 `use` hook to read the promise state, following the patterns in `.cursor/rules/3-react-patterns.md`."
-- "Create tests for this component following the testing patterns in `.cursor/rules/5-testing-patterns.md`."
+- "Following the project structure in `AGENTS.md` and React patterns in `.claude/rules/react-patterns.md`, create a new feature called [name] that..."
+- "Based on the styling patterns in `.claude/rules/styling.md`, style the [ComponentName] using Tailwind CSS v4 utilities. Use `size-*` instead of `w-*` and `h-*`."
+- "Create a hook `useAsyncData` that uses the React 19 `use` hook to read the promise state, following the patterns in `.claude/rules/react-patterns.md`."
+- "Following `.claude/rules/feature-structure.md`, scaffold a new feature module for [name]."
 
 ## Tech Stack
 
-- **Framework**: React 19 with TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS v4
-- **UI Components**: shadcn/ui
-- **Routing**: React Router DOM (or other if added)
-- **State Management**: React Context, Zustand (optional)
-- **Data Fetching**: React Query (or other if added)
-- **Forms**: React Hook Form with Zod validation (or other if added)
-- **Linting/Formatting**: ESLint 9 (Flat Config), Prettier (if added)
-- **Testing**: Vitest, React Testing Library (or other if added)
+- **Framework**: React 19 with TypeScript 5.7 (strict)
+- **Build Tool**: Vite 6
+- **Styling**: Tailwind CSS v4 (CSS-first config via `@theme` in `src/index.css`)
+- **UI Components**: shadcn/ui (new-york style), Radix UI primitives
+- **Icons**: Lucide React
+- **Linting**: ESLint 9 (Flat Config)
+- **Git Hooks**: Husky + lint-staged
 
 ## Contributing
 
@@ -125,7 +121,7 @@ Contributions are welcome! Please see CONTRIBUTING.md for details.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
 
 ## Acknowledgments
 
